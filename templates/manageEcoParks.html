@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ecopark | Manage EcoParks</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/ecopark_favicon.png') }}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Materialize css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- ****** -->
+    <!-- Datatable -->
+    <style>
+        .dataTables_wrapper .dataTables_filter input{
+            padding:0px !important
+        }
+        .dataTables_wrapper .dataTables_length select{
+            display: block;
+        }
+    </style>
+    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script>
+        $(document).ready(function(){
+		   $("#myTable").DataTable();
+        });
+   	</script>
+    <!-- Datatable ends -->
+</head>
+<body>
+    <!-- Sidenav -->
+    
+
+
+      
+
+        <ul id="slide-out" class="sidenav" >
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="{{ url_for('static', filename='images/profile_cover.svg') }}" class="profile_cover_image">
+                    </div>
+                    <a href="#user"><img class="circle" src="{{ url_for('static', filename='images/ecopark_logo_transparent.png') }}" style="width:50%;height:50%;margin-bottom:-10%;margin-left:-13%"></a>
+                    <a href="#"><span class="white-text name">Ecopark Admin</span></a>
+                    <a href="#"><span class="white-text email">admin@ecopark.com</span></a>
+                </div>
+            </li>
+            <li ><a href="/admin_dashboard" class="text_decoration">New Account Requests</a></li>
+            <li ><a href="/arrival" class="text_decoration">New Arrival</a></li>
+            <li><a href="/departure" class="text_decoration">Vehicle Departure</a></li>
+            <li class="active"><a href="/manageEcoParks" class="text_decoration">Manage EcoParks</a></li>
+            <li><a href="/manageWallet" class="text_decoration">Wallet Transactions</a></li>
+            <li><a href="/manageUsers" class="text_decoration">Manage Users</a></li>
+            <li><a href="/manageParkHistory" class="text_decoration">Park History</a></li>
+            <div class="nav_footer" style="margin-top:58%">
+                <div class="container">
+                    <form action="/admin_logout" method="post">
+                        <button class="btn btn-danger btn-block" style="background-color:#E14833;">Log out</button>
+                    </form>
+                </div>
+                
+            </div>
+        </ul>
+        <div class="row top" style="margin-top:2%;">
+            <div class="col-3">
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><img src="{{ url_for('static', filename='images/user_icon.svg') }}" alt="User" class="user" style="width:20%"></a>
+            </div>
+            <div class="col-9 ecopark" >
+                <img src="{{ url_for('static', filename='images/ecopark_horizontal.svg') }}" alt="Ecopark" class="ecopark_horizontal" style="margin-left:20%">
+            </div>
+        </div>
+
+        <div class="container">
+            <h4 style="text-align:center" class="text-dark">Manage EcoParks</h4>
+        </div>
+        
+    <!-- *********** -->
+    <div >
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4" style="float: left;margin-top:2%">
+                <h5>Existing EcoParks <a class="waves-effect waves-light  modal-trigger" href="#modal1"><i class="material-icons">create</i></a> </h5><br>
+                                  
+                {% for park in park_obj%}
+                    <p style="cursor:pointer ;display:inline-block;padding:5px 10px;margin-left:5px;margin-top:5px;border:2px solid #E14833;border-radius:10px;background-color:#e1473321">{{park.park_name}}</p>
+                {% endfor %}
+        
+            </div>
+            <div class="col-1"></div>
+            <div class="col-5" style="box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12)
+          ;border-radius:10px;padding:70px 70px;width:80% !important">
+                <form action="" method="post">
+                    <h5 style="text-align: center;">Add New EcoPark</h5>
+                    <div class="input-field col s12">
+                        <input id="park_name" type="text" class="validate" name="park_name" required>
+                        <label for="park_name">Park Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="park_latitude" type="text" class="validate" name="park_latitude" required>
+                        <label for="park_latitude">Park Latitude</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="park_longitude" type="text" class="validate"  name="park_longitude" required>
+                        <label for="park_longitude">Park Longitude</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="park_address" class="materialize-textarea"  name="park_address" required></textarea>
+                        <label for="park_address">Park Address</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="embeded_map_url" class="materialize-textarea"  name="embeded_map_url" required></textarea>
+                        <label for="embeded_map_url">Embeded Map URL</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="ud-vacancy" type="number" class="validate"  name="udv" required>
+                        <label for="ud-vacancy">UD vacancy</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="sd-vacancy" type="number" class="validate" name="sdv" required>
+                        <label for="sd-vacancy">SD vacancy</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="basic-vacancy" type="number" class="validate" name="bv" required>
+                        <label for="basic-vacancy">Basic vacancy</label>
+                    </div>
+                    <button type="submit" class="btn btn-block" onclick="return confirm('Are you sure you want to add this EcoPark?')">Add EcoPark</button>
+                </form>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <div id="modal1" class="modal" style="padding:40px">
+        <form action="/editEcoParks" method="post">
+            <h5 style="text-align: center;">Edit EcoPark</h5>
+                <div class="input-field col s12">
+                    <select onchange="changeValues()" id="loc" name="location">
+                        <option disabled selected>Choose a Location</option>
+                        {% for park in park_obj%}
+                            <option value="{{park.id}}">{{park.park_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Park Name</label>
+                </div>
+            <div class="input-field col s6">
+                <input id="epark_latitude" type="text" class="validate" name="park_latitude"  required>
+                <label for="epark_latitude">Park Latitude</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="epark_longitude" type="text" class="validate"  name="park_longitude"  required>
+                <label for="epark_longitude">Park Longitude</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="epark_address" class="materialize-textarea"  name="park_address" required></textarea>
+                <label for="epark_address">Park Address</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="eembeded_map_url" class="materialize-textarea"  name="embeded_map_url" required></textarea>
+                <label for="eembeded_map_url">Embeded Map URL</label>
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <input id="eud-vacancy" type="number" class="validate"  name="udv" required >
+                    <label for="eud-vacancy">UD vacancy</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="esd-vacancy" type="number" class="validate" name="sdv" required >
+                    <label for="esd-vacancy">SD vacancy</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="ebasic-vacancy" type="number" class="validate" name="bv" required >
+                    <label for="ebasic-vacancy">Basic vacancy</label>
+                
+                </div>
+            </div>
+            <a href="#" disabled id="deleteEcoPark" class="btn btn-danger" style="background-color: #E14833 !important;" onclick="return confirm('Are you sure you want to Delete this EcoPark?')">Delete EcoPark</a>
+            <button type="submit" class="btn">Edit EcoPark</button>
+        </form>
+        
+    </div>
+
+    {% if message %}
+        <script>M.toast({html: '{{message}}'})</script>
+    {% endif %}
+    <script>
+        $(document).ready(function(){
+            $('.modal').modal();
+            $('.sidenav').sidenav();
+            $('select').formSelect();
+          });
+             
+        var park = "{{parking_obj}}";
+        park = park.replace(/&#39;/g, '"');
+        const obj = JSON.parse(park);
+        function changeValues(){
+            var loc = $('#loc').val();
+            $("#epark_latitude").val(obj["Park"+loc]["latitude"]);
+            $("#epark_longitude").val(obj["Park"+loc]["longitude"]);
+            $("#epark_address").val(obj["Park"+loc]["park_address"]);
+            $("#eembeded_map_url").val(obj["Park"+loc]["embeded_map"]);
+            $("#eud-vacancy").val(obj["Park"+loc]["ultra_deluxe_vacancy"]);
+            $("#esd-vacancy").val(obj["Park"+loc]["semi_deluxe_vacancy"]);
+            $("#ebasic-vacancy").val(obj["Park"+loc]["basic_vacancy"]);
+            $("#deleteEcoPark").attr("href","/deleteEcopark/"+loc);
+        }
+    </script>
+    
+</body>
+</html>

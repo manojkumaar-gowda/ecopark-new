@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ecopark | Users</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/ecopark_favicon.png') }}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- Materialize css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- ****** -->
+    <!-- Datatable -->
+    
+    
+    <style>
+        .dataTables_wrapper .dataTables_filter input{
+            padding:0px !important
+        }
+        .dataTables_wrapper .dataTables_length select{
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <!-- Datatable ends -->
+   
+</head>
+<body>
+    <!-- Sidenav -->
+        
+
+        <ul id="slide-out" class="sidenav" >
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="{{ url_for('static', filename='images/profile_cover.svg') }}" class="profile_cover_image">
+                    </div>
+                    <a href="#user"><img class="circle" src="{{ url_for('static', filename='images/ecopark_logo_transparent.png') }}" style="width:50%;height:50%;margin-bottom:-10%;margin-left:-13%"></a>
+                    <a href="#"><span class="white-text name">Ecopark Admin</span></a>
+                    <a href="#"><span class="white-text email">admin@ecopark.com</span></a>
+                </div>
+            </li>
+            <li ><a href="/admin_dashboard" class="text_decoration">New Account Requests</a></li>
+            <li><a href="/arrival" class="text_decoration">New Arrival</a></li>
+            <li><a href="/departure" class="text_decoration">Vehicle Departure</a></li>
+            <li><a href="/manageEcoParks" class="text_decoration">Manage EcoParks</a></li>
+            <li><a href="/manageWallet" class="text_decoration">Wallet Transactions</a></li>
+            <li  class="active"><a href="/manageUsers" class="text_decoration">Manage Users</a></li>
+            <li><a href="/manageParkHistory" class="text_decoration">Park History</a></li>
+
+            <div class="nav_footer" style="margin-top:58%">
+                <div class="container">
+                    <form action="/admin_logout" method="post">
+                        <button class="btn btn-danger btn-block" style="background-color:#E14833;">Log out</button>
+                    </form>
+                </div>
+                
+            </div>
+        </ul>
+        <div class="row top" style="margin-top:2%;">
+            <div class="col-3">
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><img src="{{ url_for('static', filename='images/user_icon.svg') }}" alt="User" class="user" style="width:20%"></a>
+            </div>
+            <div class="col-9 ecopark" >
+                <img src="{{ url_for('static', filename='images/ecopark_horizontal.svg') }}" alt="Ecopark" class="ecopark_horizontal" style="margin-left:20%">
+            </div>
+        </div>
+
+        <div class="container">
+            <h4 style="text-align:center" class="text-dark">Users</h4>
+        </div>
+        
+            
+    <!-- *********** -->
+    <div class="container_fluid overall_cont">
+        
+        <div style="width: 96%;margin-left:2%">
+            <table id="myTable" class="table" style="width:100%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th style="text-align: center;">Client ID</th>
+                        <th style="text-align: center;">Vehicle Number</th>
+                        <th style="text-align: center;">Vehicle Model</th>
+                        <th style="text-align: center;">Vehicle Owner</th>
+                        <th style="text-align: center;">Mobile Number</th>
+                        <th style="text-align: center;">Email</th>
+                        <th style="text-align: center;">Insurance Number</th>
+                        <th style="text-align: center;">Chasis Number Number</th>
+                        <th style="text-align: center;">Engine Number</th>
+                        <th style="text-align: center;">Vehicle Color</th>
+                        <th style="text-align: center;">Date Joined</th>
+                        <th style="text-align: center;">Account approved?</th>
+                        <th style="text-align: center;">Park status?</th>
+                        <th style="text-align: center;">Wallet Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% if user_obj %}
+                        {% for req in user_obj %}
+                        <tr>
+                            <td style="color:black;text-align: center;">{{ req.ecopark_id }}</td>
+                            <td style="color:black;text-align: center;">{{ req.vehicle_number }}</td>
+                            <td style="color:black;text-align: center;">{{ req.vehicle_model }}</td>
+                            <td style="color:black;text-align: center;">{{ req.vehicle_owner }}</td>
+                            <td style="color:black;text-align: center;">{{ req.mobile_number }}</td>
+                            <td style="color:black;text-align: center;">{{ req.email }}</td>
+                            <td style="color:black;text-align: center;">{{ req.insurance_policy_number }}</td>
+                            <td style="color:black;text-align: center;">{{ req.chasis_number }}</td>
+                            <td style="color:black;text-align: center;">{{ req.engine_number }}</td>
+                            <td style="color:black;text-align: center;">{{ req.vehicle_color }}</td>
+                            <td style="color:black;text-align: center;">{{ req.date_joined }}</td>
+                            <td style="color:black;text-align: center;">{{ req.account_approved }}</td>
+                            <td style="color:black;text-align: center;">{{ req.vehicle_park_status }}</td>
+                            <td style="color:black;text-align: center;">{{ req.wallet_balance }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <td>No records found</td>
+                    {% endif %}
+
+                    
+                    
+                </tbody>
+                
+            </table>
+           
+        </div>
+    </div>
+    <!-- Js Links -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
+            });
+          });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+        
+    </script>
+    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function(){
+		   $("#myTable").DataTable();
+        });
+   	</script>
+    
+    
+</body>
+</html>
