@@ -37,25 +37,52 @@ STEPS AFTER DOWNLOADING THE CODE
         db.create_all()
 
 
-    >>
-        db.session.add(EcoParks(park_name="JP Nagar",park_address="Ecopark, 33rd Main Rd, MG Layout, JP Nagar Phase 6, J. P. Nagar, Bengaluru, Karnataka 560078",ultra_deluxe_vacancy = 50,semi_deluxe_vacancy=70,basic_vacancy=99,latitude="12.904054047384347",longitude="77.58047027186707"))
-
 
     >>
-        db.session.add(EcoParks(park_name="Banashankari",park_address="Ecopark, No 43/2, Outer Ring Road Near, Kathreguppe, Banashankari 3rd Stage, Banashankari, Bengaluru, Karnataka 560085",ultra_deluxe_vacancy = 60,semi_deluxe_vacancy=80,basic_vacancy=90,latitude="12.923003699864813",longitude="77.55370098591682"))
+        db.session.add(EcoParks(park_name="JP Nagar",park_address="Ecopark, 33rd Main Rd, MG Layout, JP Nagar Phase 6, J. P. Nagar, Bengaluru, Karnataka 560078",ultra_deluxe_vacancy = 50,semi_deluxe_vacancy=70,basic_vacancy=99,latitude="12.904054047384347",longitude="77.58047027186707",embeded_map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10533.673399184396!2d77.57842774048427!3d12.901232342121146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae150d7349a72b%3A0xf3d03ea1e1dd3d46!2sJ.%20P.%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560078!5e0!3m2!1sen!2sin!4v1640092015597!5m2!1sen!2sin"))
 
 
     >>
-        db.session.add(EcoParks(park_name="HSR Layout",park_address="Ecopark, Service Rd, Sector 4, HSR Layout, Bengaluru, Karnataka 560102",ultra_deluxe_vacancy = 55,semi_deluxe_vacancy=75,basic_vacancy=90,latitude="12.915361135682208",longitude="77.63938522761872"))
+        db.session.add(EcoParks(park_name="Banashankari",park_address="Ecopark, No 43/2, Outer Ring Road Near, Kathreguppe, Banashankari 3rd Stage, Banashankari, Bengaluru, Karnataka 560085",ultra_deluxe_vacancy = 60,semi_deluxe_vacancy=80,basic_vacancy=90,latitude="12.923003699864813",longitude="77.55370098591682",embeded_map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22317.194000610576!2d77.53623629205836!3d12.933482404397962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e2c22c358b7%3A0x157068107f36f2ef!2sBanashankari%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1640093043442!5m2!1sen!2sin"))
 
 
     >>
-        db.session.add(EcoParks(park_name="Electronic city",park_address="Ecopark, Electronics City Phase 1, Electronic City, Bengaluru, Karnataka 560100",ultra_deluxe_vacancy = 80,semi_deluxe_vacancy=90,basic_vacancy=99,latitude="12.848371629224271",longitude="77.66358293413437"))
+        db.session.add(EcoParks(park_name="HSR Layout",park_address="Ecopark, Service Rd, Sector 4, HSR Layout, Bengaluru, Karnataka 560102",ultra_deluxe_vacancy = 55,semi_deluxe_vacancy=75,basic_vacancy=90,latitude="12.915361135682208",longitude="77.63938522761872",embeded_map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7777.7703293933355!2d77.62991412548442!3d12.915101560483162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1491bfdc6ecd%3A0xf232718439fbc879!2sHSR%20Layout%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1640092919578!5m2!1sen!2sin"))
+
+
+    >>
+        db.session.add(EcoParks(park_name="Electronic city",park_address="Ecopark, Electronics City Phase 1, Electronic City, Bengaluru, Karnataka 560100",ultra_deluxe_vacancy = 80,semi_deluxe_vacancy=90,basic_vacancy=99,latitude="12.848371629224271",longitude="77.66358293413437",embeded_map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62241.699731122746!2d77.6535976982812!3d12.836411294504565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6c8a7750e1c3%3A0x4a5cfc0fce5af71d!2sElectronic%20City%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1640092783105!5m2!1sen!2sin"))
+
 
 
     >>
         db.session.commit()
 
+
+
+    >>
+            from app import EcoParksV
+            
+            
+
+    >>
+        db.session.add(BackupEcoParks(park_name="JP Nagar",park_address="Ecopark, 33rd Main Rd, MG Layout, JP Nagar Phase 6, J. P. Nagar, Bengaluru, Karnataka 560078",ultra_deluxe_vacancy = 50,semi_deluxe_vacancy=70,basic_vacancy=99,latitude="12.904054047384347",longitude="77.58047027186707",embeded_map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10533.673399184396!2d77.57842774048427!3d12.901232342121146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae150d7349a72b%3A0xf3d03ea1e1dd3d46!2sJ.%20P.%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560078!5e0!3m2!1sen!2sin!4v1640092015597!5m2!1sen!2sin"))
+
+
+    >>
+        db.session.add(BackupEcoParks(park_name="Banashankari",park_address="Ecopark, No 43/2, Outer Ring Road Near, Kathreguppe, Banashankari 3rd Stage, Banashankari, Bengaluru, Karnataka 560085",ultra_deluxe_vacancy = 60,semi_deluxe_vacancy=80,basic_vacancy=90,latitude="12.923003699864813",longitude="77.55370098591682",embeded_map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22317.194000610576!2d77.53623629205836!3d12.933482404397962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e2c22c358b7%3A0x157068107f36f2ef!2sBanashankari%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1640093043442!5m2!1sen!2sin"))
+
+
+    >>
+        db.session.add(BackupEcoParks(park_name="HSR Layout",park_address="Ecopark, Service Rd, Sector 4, HSR Layout, Bengaluru, Karnataka 560102",ultra_deluxe_vacancy = 55,semi_deluxe_vacancy=75,basic_vacancy=90,latitude="12.915361135682208",longitude="77.63938522761872",embeded_map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7777.7703293933355!2d77.62991412548442!3d12.915101560483162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1491bfdc6ecd%3A0xf232718439fbc879!2sHSR%20Layout%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1640092919578!5m2!1sen!2sin"))
+
+
+    >>
+        db.session.add(BackupEcoParks(park_name="Electronic city",park_address="Ecopark, Electronics City Phase 1, Electronic City, Bengaluru, Karnataka 560100",ultra_deluxe_vacancy = 80,semi_deluxe_vacancy=90,basic_vacancy=99,latitude="12.848371629224271",longitude="77.66358293413437",embeded_map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62241.699731122746!2d77.6535976982812!3d12.836411294504565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6c8a7750e1c3%3A0x4a5cfc0fce5af71d!2sElectronic%20City%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1640092783105!5m2!1sen!2sin"))
+        
+        
+        
+        
 6. Now make registrations and manage them from the admin panel
 
     ID:ecopark
