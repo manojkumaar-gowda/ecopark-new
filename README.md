@@ -61,7 +61,7 @@ STEPS AFTER DOWNLOADING THE CODE
 
 
     >>
-            from app import EcoParksV
+        from app import BackupEcoParks
             
             
 
