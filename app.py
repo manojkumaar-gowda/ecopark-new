@@ -106,7 +106,7 @@ def sendmessage(message,to):
     url = "https://www.fast2sms.com/dev/bulkV2"
     payload = "sender_id=TXTIND&message="+message+"&route=v3&numbers="+to
     headers = {
-        'authorization': "tglhqzDde7CSJOiGvYy9RAXVjmIua6P51WkFp4bLs3U2rKT0wZrNtasovd1CIPKRzUcAgkTZ9bHjhWBy",
+        'authorization': "YOUR FAST2SMS KEY",
         'Content-Type': "application/x-www-form-urlencoded",
         'Cache-Control': "no-cache",
         }
@@ -863,7 +863,7 @@ def pay():
         return redirect('/login')
     if "recharge" not in session:
         return redirect('/wallet')
-    client = razorpay.Client(auth= ("rzp_test_BRaMCabfn2AraG","eZCAXHrfSMC4IJk0enUlJGUf"))
+    client = razorpay.Client(auth= (" YOUR RAZORPAY CRED"," YOUR RAZORPAY CRED"))
     amount = session["recharge"]
     amount = amount+"00"
     payment = client.order.create({'amount' : int(amount),'currency' : 'INR' , 'payment_capture': '1'})
